@@ -23,7 +23,6 @@ var Word = function(wrd) {
 	};
 	this.checkIfLetterFound = function(guessLetter) {
 		var whatToReturn = 0;
-		//console.log("checkIfLetterFound: " + letter.Letter[1].character);
 		for (var i=0; i<this.lets.length; i++) {
 			if(this.lets[i].character == guessLetter) {
 				this.lets[i].appear = true;

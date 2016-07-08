@@ -8,7 +8,7 @@ var Letter = function(chr) {
 			this.appear = true;
 			return " " + this.character + " ";
 		} else {
-			return " _ ";
+			return "_ ";
 		}
 	}
 }

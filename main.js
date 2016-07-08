@@ -5,17 +5,15 @@ var Game = require('./game');
 prompt.start();
 
 game = {
-	wordBank : Game.Game.wordBank,
-	userGuessedLetters : [],
-	wordsWon : 0,
-	guessesRemaining : 10, //per word
-	currentWrd : null, //the word object
-	startGame : function (wrd){
-		//make sure the user has 10 guesses
+	wordBank: Game.Game.wordBank,
+	userGuessedLetters: [],
+	wordsWon: 0,
+	guessesRemaining: 10, 
+	currentWrd: null, 
+	startGame: function (wrd){
 
 		this.resetGuessesRemaining();
 
-		//get a random word from the array
 		this.currentWrd = new Word.Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
 
 		this.currentWrd.getLets(); //populate currentWrd (made from Word constructor function) object with letters
@@ -41,7 +39,7 @@ game = {
 
 	}, 
 	resetGuessesRemaining : function(){
-		this.guessRemaining = 10;
+		this.guessesRemaining = 10;
 	},
 	keepPromptingUser : function(){
 		var self = this;
