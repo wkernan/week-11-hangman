@@ -45,19 +45,11 @@ game = {
 		var self = this;
 
 		prompt.get(['guessLetter'], function(err, result) {
-		    // result is an object like this: { guessLetter: 'f' }
-		    //console.log(result.guessLetter);
-		    // if(self.userGuessedLetters.indexOf(result.guessLetter) < 0) {
-    		// 	self.userGuessedLetters.push(result.guessLetter);
-		    // } else {
-		    // 	console.log('Already guessed that letter');
-		    // }
 		    
 		    console.log('The letter you guessed is: ' + result.guessLetter);
 
-		    //this checks if the letter was found and if it is then it sets that specific letter in the word to be found
 		    var findHowManyOfUserGuess = self.currentWrd.checkIfLetterFound(result.guessLetter);
-//if the user guessed incorrectly minus the number of guesses they have left
+
 		    if (findHowManyOfUserGuess == 0){
 			    if(self.userGuessedLetters.indexOf(result.guessLetter) < 0) {
     				self.userGuessedLetters.push(result.guessLetter);
@@ -66,17 +58,16 @@ game = {
 			    } else {
 			    	console.log('Already guessed that letter');
 			    }
-		    }else{
+		    } else {
 		    	if(self.userGuessedLetters.indexOf(result.guessLetter) < 0) {
     				self.userGuessedLetters.push(result.guessLetter);
 			    	console.log('You guessed right!');
 			    } else {
 			    	console.log('Already guessed that letter');
 			    }
-		    	//check if you win only when you are right
 	    		if(self.currentWrd.didWeFindTheWord()) {
 			    	console.log('You Won!!!');
-			    	return; //end game
+			    	return;
 			    }
 		    }
 		    
