@@ -19,7 +19,21 @@ game = {
 		this.currentWrd = new Word.Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
 
 		this.currentWrd.getLets(); //populate currentWrd (made from Word constructor function) object with letters
-		console.log("Welcome to Hangman!");
+		console.log("     _____                               __   _______ _                               ");
+		console.log("    / ____|                             / _| |__   __| |                              ");
+		console.log("   | |  __  __ _ _ __ ___   ___    ___ | |_     | |  | |__  _ __ ___  _ __   ___  ___ ");
+		console.log("   | | |_ |/ _` | '_ ` _ \\ / _ \\  / _ \\|  _|    | |  | '_ \\| '__/ _ \\| '_ \\ / _ \\/ __|");
+		console.log("   | |__| | (_| | | | | | |  __/ | (_) | |      | |  | | | | | | (_) | | | |  __/\\__ \\");
+		console.log("    \\_____|\\__,_|_| |_| |_|\\___|  \\___/|_|      |_|  |_| |_|_|  \\___/|_| |_|\\___||___/");
+		console.log("    _    _                                         ");
+		console.log("   | |  | |                                        ");
+		console.log("   | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __  ");
+		console.log("   |  __  |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ ");
+		console.log("   | |  | | (_| | | | | (_| | | | | | | (_| | | | |");
+		console.log("   |_|  |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|");
+		console.log("                        __/ |                      ");
+		console.log("                       |___/                       ");
+		console.log("Welcome to Game of Thrones Hangman!\nAll words are names of characters from the show.");
     console.log(this.currentWrd.wordRender() + '\n');
 
 		this.keepPromptingUser();

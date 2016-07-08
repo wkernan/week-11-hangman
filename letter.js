@@ -6,7 +6,7 @@ var Letter = function(chr) {
 			return this.character;
 		} else if(this.character == " ") {
 			this.appear = true;
-			return this.character;
+			return " " + this.character + " ";
 		} else {
 			return " _ ";
 		}
