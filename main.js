@@ -31,7 +31,7 @@ game = {
 		console.log("   |_|  |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|");
 		console.log("                        __/ |                      ");
 		console.log("                       |___/                       ");
-		console.log("Welcome to Game of Thrones Hangman!\nAll words are names of characters from the show.");
+		console.log("Welcome to Game of Thrones Hangman!\nGuess the name of the character from the show!");
     console.log(this.currentWrd.wordRender() + '\n');
 
 		this.keepPromptingUser();
