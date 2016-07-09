@@ -1,4 +1,5 @@
 var prompt = require('prompt');
+var inquirer = require('inquirer');
 var Word = require('./word');
 var Game = require('./game');
 
@@ -11,6 +12,7 @@ game = {
 	guessesRemaining: 10, 
 	currentWrd: null, 
 	startGame: function (wrd){
+		this.userGuessedLetters = [];
 
 		this.resetGuessesRemaining();
 
@@ -45,7 +47,8 @@ game = {
 		var self = this;
 
 		prompt.get(['guessLetter'], function(err, result) {
-		    
+			console.log(result.guessLetter.charCodeAt() >= 97 && result.guessLetter.charCodeAt() <= 122 && result.guessLetter.length == 1);
+		  if(result.guessLetter.charCodeAt() >= 97 && result.guessLetter.charCodeAt() <= 122 && result.guessLetter.length == 1) {  
 		    console.log('The letter you guessed is: ' + result.guessLetter);
 
 		    var findHowManyOfUserGuess = self.currentWrd.checkIfLetterFound(result.guessLetter);
@@ -55,6 +58,10 @@ game = {
     				self.userGuessedLetters.push(result.guessLetter);
     				self.guessesRemaining--;
 			    	console.log('You guessed wrong!');
+  			    console.log('Guesses remaining: ', self.guessesRemaining);
+				    console.log(self.currentWrd.wordRender() + '\n');
+				    console.log('here are the letters you guessed already: ' + self.userGuessedLetters);
+
 			    } else {
 			    	console.log('Already guessed that letter');
 			    }
@@ -62,28 +69,53 @@ game = {
 		    	if(self.userGuessedLetters.indexOf(result.guessLetter) < 0) {
     				self.userGuessedLetters.push(result.guessLetter);
 			    	console.log('You guessed right!');
+  			    console.log('Guesses remaining: ', self.guessesRemaining);
+				    console.log(self.currentWrd.wordRender() + '\n');
+				    console.log('here are the letters you guessed already: ' + self.userGuessedLetters);
 			    } else {
 			    	console.log('Already guessed that letter');
 			    }
 	    		if(self.currentWrd.didWeFindTheWord()) {
-			    	console.log('You Won!!!');
-			    	return;
+			    	console.log('You Won!!!\nThe name was: ' + self.currentWrd.word);
+			    	inquirer.prompt([
+			    		{
+			    			type: "confirm",
+			    			message: "Would you like to play again?",
+			    			name: "play"
+			    		}
+		    		]).then(function(answers) {
+		    			if(answers.play) {
+		    				self.startGame();
+		    			} else {
+		    				return;
+		    			}
+		    		});
 			    }
 		    }
 		    
-		    console.log('Guesses remaining: ', self.guessesRemaining);
-		    console.log(self.currentWrd.wordRender() + '\n');
-		    console.log('here are the letters you guessed already: ' + self.userGuessedLetters);
-
 		    if ((self.guessesRemaining > 0) && (self.currentWrd.found == false)){
 		    	self.keepPromptingUser();
 		    }
 		    else if(self.guessesRemaining == 0){
-		    	console.log('Game over bro it was', self.currentWrd.word);
-		    	console.log('Get with the program man');
-		    }else{
-		    	console.log(self.currentWrd.wordRender() + '\n');
+		    	console.log('You lose, winter has come! The name was:', self.currentWrd.word);
+		    	inquirer.prompt([
+			    		{
+			    			type: "confirm",
+			    			message: "Would you like to play again?",
+			    			name: "play"
+			    		}
+		    		]).then(function(answers) {
+		    			if(answers.play) {
+		    				self.startGame();
+		    			} else {
+		    				return;
+		    			}
+	    		});
 		    }
+		  } else {
+		  	console.log("You need to enter a valid letter");
+		  	self.keepPromptingUser();
+		  }
 		});
 	}
 

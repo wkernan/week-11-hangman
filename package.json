@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wkernan/week-11-hangman#readme",
   "dependencies": {
+    "inquirer": "^1.1.2",
     "prompt": "^1.0.0"
   }
 }
