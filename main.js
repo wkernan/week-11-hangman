@@ -47,7 +47,6 @@ game = {
 		var self = this;
 
 		prompt.get(['guessLetter'], function(err, result) {
-			console.log(result.guessLetter.charCodeAt() >= 97 && result.guessLetter.charCodeAt() <= 122 && result.guessLetter.length == 1);
 		  if(result.guessLetter.charCodeAt() >= 97 && result.guessLetter.charCodeAt() <= 122 && result.guessLetter.length == 1) {  
 		    console.log('The letter you guessed is: ' + result.guessLetter);
 
